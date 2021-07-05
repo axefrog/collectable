@@ -12,7 +12,8 @@ export function fromKeys<K> (compare: ComparatorFn<K>, keys: K[]|RedBlackTreeStr
     }
   }
   else {
-    const it = isRedBlackTree<K>(keys) ? iterateKeysFromFirst(keys) : keys[Symbol.iterator]();
+    const iterable = isRedBlackTree<K>(keys) ? iterateKeysFromFirst(keys) : keys;
+    const it = iterable[Symbol.iterator]();
     var current: IteratorResult<K>;
     while(!(current = it.next()).done) {
       set(current.value, null, tree);

@@ -20,6 +20,7 @@ export function empty<K, V, U> (
     mutable = false;
   }
   else {
+    compare = <ComparatorFn<SortedMapEntry<K, V, U>>>arg1;
     mutable = isMutationContext(arg0) || isBoolean(arg0) ? arg0 : false;
   }
   return emptySortedMap<K, V, U>(compare, select, mutable);
